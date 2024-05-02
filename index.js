@@ -4,7 +4,7 @@ const fs = require('fs');
 const cors = require('cors'); 
 const app = express();
 
-const PORT = 3000;
+const portno = process.env.PORT || 3000;
 app.use(cors()); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -135,6 +135,6 @@ app.post('/sendmail', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
+app.listen(portno, () => {
     console.log("server started");
 });
