@@ -77,10 +77,10 @@ app.post("/login", (req, res) => {
 
 app.post("/Upload",(req,res)=>{
     const formdata=req.body;
-    fs.readFile("../Notenest/src/MOCK_DATA.json",(err,data)=>{
+    fs.readFile("./MOCK_DATA.json",(err,data)=>{
         if(err){
             let arr=[formdata]; 
-            fs.writeFile("../Notenest/src/MOCK_DATA.json",JSON.stringify(arr),(err)=>{
+            fs.writeFile("./MOCK_DATA.json",JSON.stringify(arr),(err)=>{
                 if(err){
                     res.status(500).send("There is an error in writing the file");
                 }
@@ -91,7 +91,7 @@ app.post("/Upload",(req,res)=>{
         } else {
             let arr = JSON.parse(data);
             arr.push(formdata);
-            fs.writeFile("../Notenest/src/MOCK_DATA.json", JSON.stringify(arr), (err) => {
+            fs.writeFile("./MOCK_DATA.json", JSON.stringify(arr), (err) => {
                 if(err){
                     res.status(500).send("There is an error in writing the file");
                 }
