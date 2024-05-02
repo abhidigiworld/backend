@@ -4,6 +4,7 @@ const fs = require('fs');
 const cors = require('cors'); 
 const app = express();
 
+const PORT = process.env.PORT || 3000;
 app.use(cors()); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -116,13 +117,12 @@ app.post('/sendmail', (req, res) => {
     });
 
     const mailOptions = {
-        from: email, // Sender address
-        to: 'recipient@example.com', // Recipient address
-        subject: 'New message from your website', // Subject line
+        from: email,
+        to: 'abhidigiworld@gmail.com', 
+        subject: 'New message from your website', 
         text: `You have a new message from ${name} (${email}): ${message}` // Plain text body
     };
 
-    // Send email
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             console.log('Error sending email:', error);
@@ -135,6 +135,6 @@ app.post('/sendmail', (req, res) => {
 });
 
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("server started");
 });
